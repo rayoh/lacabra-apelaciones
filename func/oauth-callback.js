@@ -27,7 +27,7 @@ exports.handler = async function (event, context) {
 
         if (!result.ok) {
             console.log(data);
-            throw new Error("Failed to get user access token");
+            throw new Error("Ha habido un error en obtener la clave de usuario");
         }
 
         const user = await getUserInfo(data.access_token);
@@ -35,7 +35,7 @@ exports.handler = async function (event, context) {
             return {
                 statusCode: 303,
                 headers: {
-                    "Location": `/error?msg=${encodeURIComponent("You cannot submit ban appeals with this Discord account.")}`,
+                    "Location": `/error?msg=${encodeURIComponent("No puedes realizar un formulario de apelación de ban con esta cuenta de Discord")}`,
                 },
             };
         }
