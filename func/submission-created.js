@@ -88,7 +88,7 @@ exports.handler = async function (event, context) {
                     components: [{
                         type: 2,
                         style: 5,
-                        label: "Aprobar apelación y desbanear al usuario",
+                        label: "Aprobar apelación y remover el ban",
                         url: `${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))}`
                     }]
                 }];
