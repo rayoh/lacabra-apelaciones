@@ -17,14 +17,14 @@ exports.handler = async function (event, context) {
                 return {
                     statusCode: 303,
                     headers: {
-                        "Location": `/success?msg=${encodeURIComponent("User has been unbanned\nPlease contact them and let them know")}`
+                        "Location": `/success?msg=${encodeURIComponent("Se le ha removido el ban al usuario\nContáctale para hacérselo saber")}`
                     }
                 };
             } catch (e) {
                 return {
                     statusCode: 303,
                     headers: {
-                        "Location": `/error?msg=${encodeURIComponent("Failed to unban user\nPlease manually unban")}`
+                        "Location": `/error?msg=${encodeURIComponent("Ha habido un fallo al momento de remover el ban\nPuedes remover el ban manualmente")}`
                     }
                 };
             }
