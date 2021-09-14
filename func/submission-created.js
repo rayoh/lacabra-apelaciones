@@ -54,7 +54,7 @@ exports.handler = async function (event, context) {
                         value: payload.banReason.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
-                        name: "¿Por qué cree que deberíamos levantarte el ban?",
+                        name: "¿Por qué crees que deberíamos levantarte el ban?",
                         value: payload.appealText.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
