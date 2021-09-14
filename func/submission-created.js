@@ -35,30 +35,30 @@ exports.handler = async function (event, context) {
             return {
                 statusCode: 303,
                 headers: {
-                    "Location": `/error?msg=${encodeURIComponent("You cannot submit ban appeals with this Discord account.")}`,
+                    "Location": `/error?msg=${encodeURIComponent("No puedes realizar la apelación de ban con esta cuenta de Discord.")}`,
                 },
             };
         }
         
         const message = {
             embed: {
-                title: "New appeal submitted!",
+                title: "¡Una nueva apelación ha sido enviada!",
                 timestamp: new Date().toISOString(),
                 fields: [
                     {
-                        name: "Submitter",
+                        name: "Usuario:",
                         value: `<@${userInfo.id}> (${userInfo.username}#${userInfo.discriminator})`
                     },
                     {
-                        name: "Why were you banned?",
+                        name: "¿Por qué has sido baneado?",
                         value: payload.banReason.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
-                        name: "Why do you feel you should be unbanned?",
+                        name: "¿Por qué cree que deberíamos levantarte el ban?",
                         value: payload.appealText.slice(0, MAX_EMBED_FIELD_CHARS)
                     },
                     {
-                        name: "What will you do to avoid being banned in the future?",
+                        name: "¿Qué harás para evitar ser baneado en el futuro?",
                         value: payload.futureActions.slice(0, MAX_EMBED_FIELD_CHARS)
                     }
                 ]
@@ -70,7 +70,7 @@ exports.handler = async function (event, context) {
                 const ban = await getBan(userInfo.id, process.env.GUILD_ID, process.env.DISCORD_BOT_TOKEN);
                 if (ban !== null && ban.reason) {
                     message.embed.footer = {
-                        text: `Original ban reason: ${ban.reason}`.slice(0, MAX_EMBED_FOOTER_CHARS)
+                        text: `Razón original del ban: ${ban.reason}`.slice(0, MAX_EMBED_FOOTER_CHARS)
                     };
                 }
             } catch (e) {
@@ -88,7 +88,7 @@ exports.handler = async function (event, context) {
                     components: [{
                         type: 2,
                         style: 5,
-                        label: "Approve appeal and unban user",
+                        label: "Aprobar apelación y desbanear al usuario",
                         url: `${unbanUrl.toString()}?token=${encodeURIComponent(createJwt(unbanInfo))}`
                     }]
                 }];
@@ -119,7 +119,7 @@ exports.handler = async function (event, context) {
             }
         } else {
             console.log(JSON.stringify(await result.json()));
-            throw new Error("Failed to submit message");
+            throw new Error("Ha habido un fallo en enviar el mensaje");
         }
     }
 
