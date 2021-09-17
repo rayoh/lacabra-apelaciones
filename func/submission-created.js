@@ -42,7 +42,7 @@ exports.handler = async function (event, context) {
         
         const message = {
             embed: {
-                title: "¡Una nueva apelación ha sido enviada!",
+                title: "¡Una apelación ha sido recibida!",
                 timestamp: new Date().toISOString(),
                 fields: [
                     {
